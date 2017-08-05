@@ -8,6 +8,7 @@ namespace NDBot.Dialogs
     [Serializable]
     public class RootDialog : IDialog<object>
     {
+
         public Task StartAsync(IDialogContext context)
         {
             context.Wait(MessageReceivedAsync);
@@ -17,15 +18,32 @@ namespace NDBot.Dialogs
 
         private async Task MessageReceivedAsync(IDialogContext context, IAwaitable<object> result)
         {
-            var activity = await result as Activity;
+            var message = await result as Activity;
 
-            // calculate something for us to return
-            int length = (activity.Text ?? string.Empty).Length;
+            if (message.Text == "reset")
+            {
 
-            // return our reply to the user
-            await context.PostAsync($"You sent {activity.Text} which was {length} characters");
+            }
+          
+        }
 
+
+
+        public async Task AfterResetAsync(IDialogContext context, IAwaitable<bool> argument)
+        {
+            var confirm = await argument;
+            if (confirm)
+            {
+                this.count = 1;
+                await context.PostAsync("Reset count.");
+            }
+            else
+            {
+                await context.PostAsync("Did not reset count.");
+            }
             context.Wait(MessageReceivedAsync);
         }
+
+
     }
 }
