@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace HelloSGBotService.LUISService
 {
-    interface ILUISService
+    public interface ILUISService
     {
+        string TestGet();
     }
 }

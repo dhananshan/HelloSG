@@ -2,12 +2,17 @@
 using System.Threading.Tasks;
 using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Connector;
+using HelloSGBotService.LUISService;
 
 namespace NDBot.Dialogs
 {
     [Serializable]
     public class RootDialog : IDialog<object>
     {
+        //private ILUISService _luisService;
+
+        //public RootDialog(ILUISService luisService) {
+        //}
 
         public Task StartAsync(IDialogContext context)
         {
@@ -20,6 +25,7 @@ namespace NDBot.Dialogs
         {
             var message = await result as Activity;
 
+            //var val = this._luisService.TestGet();
             if (message.Text == "reset")
             {
 
@@ -34,7 +40,7 @@ namespace NDBot.Dialogs
             var confirm = await argument;
             if (confirm)
             {
-                this.count = 1;
+               
                 await context.PostAsync("Reset count.");
             }
             else
