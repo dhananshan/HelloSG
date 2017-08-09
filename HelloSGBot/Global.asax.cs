@@ -1,7 +1,6 @@
 ﻿using Autofac;
 using Autofac.Integration.WebApi;
-using HelloSGBotService.HTTPService;
-using HelloSGBotService.LUISService;
+using Microsoft.Bot.Builder.Dialogs;
 using NDBot.Dialogs;
 using System;
 using System.Collections.Generic;
@@ -19,24 +18,27 @@ namespace NDBot
         {
             GlobalConfiguration.Configure(WebApiConfig.Register);
 
-            var builder = new ContainerBuilder();
+
+            //TODO
+            //var builder = new ContainerBuilder();
 
             // Get your HttpConfiguration.
-            var config = GlobalConfiguration.Configuration;
+            //var config = GlobalConfiguration.Configuration;
 
+            
             // Register your Web API controllers.
-            builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
+            //builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
 
-            builder.RegisterType<LUISService>()
-                   .As<ILUISService>()
-                   .InstancePerRequest();
+            //builder.RegisterType<LUISService>()
+            //       .As<ILUISService>()
+            //       .InstancePerRequest();
 
-            builder.RegisterType<HTTPService>()
-                   .As<IHTTPService>()
-                   .InstancePerRequest();
+            //builder.RegisterType<HTTPService>()
+            //       .As<IHTTPService>()
+            //       .InstancePerRequest();
 
-            var container = builder.Build();
-            config.DependencyResolver = new AutofacWebApiDependencyResolver(container);
+            //var container = builder.Build();
+            //config.DependencyResolver = new AutofacWebApiDependencyResolver(container);
 
         }
     }

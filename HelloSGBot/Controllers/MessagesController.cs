@@ -4,17 +4,14 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Connector;
-using HelloSGBotService.LUISService;
 
 namespace NDBot
 {
     [BotAuthentication]
     public class MessagesController : ApiController
     {
-        private ILUISService _luisService;
-
-        public MessagesController(ILUISService luisService) {
-            this._luisService = luisService;
+        public MessagesController() {
+            //ILUISService luisService
         }
         /// <summary>
         /// POST: api/Messages

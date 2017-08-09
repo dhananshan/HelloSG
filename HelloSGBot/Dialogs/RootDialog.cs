@@ -2,18 +2,22 @@
 using System.Threading.Tasks;
 using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Connector;
-using HelloSGBotService.LUISService;
+using HelloSGBotService.Service;
+using HelloSGBotService.Model.LUIS;
 
 namespace NDBot.Dialogs
 {
+
     [Serializable]
     public class RootDialog : IDialog<object>
     {
-        //private ILUISService _luisService;
+        private string _intent { get; set; }
 
-        //public RootDialog(ILUISService luisService) {
-        //}
+        private ILUISService _luisService ;
 
+        public RootDialog() {
+            this._luisService = new LUISService();
+        }
         public Task StartAsync(IDialogContext context)
         {
             context.Wait(MessageReceivedAsync);
@@ -25,31 +29,17 @@ namespace NDBot.Dialogs
         {
             var message = await result as Activity;
 
-            //var val = this._luisService.TestGet();
-            if (message.Text == "reset")
-            {
+            LUISResponse luisRes = await this._luisService.GetIntent(message.Text);
 
+            switch (luisRes.topScoringIntent.intent) {
+
+                case LUISIntents.Weather:
+                    await context.PostAsync("Weahther is ...");
+                    break;
             }
-          
-        }
 
-
-
-        public async Task AfterResetAsync(IDialogContext context, IAwaitable<bool> argument)
-        {
-            var confirm = await argument;
-            if (confirm)
-            {
-               
-                await context.PostAsync("Reset count.");
-            }
-            else
-            {
-                await context.PostAsync("Did not reset count.");
-            }
             context.Wait(MessageReceivedAsync);
         }
-
 
     }
 }

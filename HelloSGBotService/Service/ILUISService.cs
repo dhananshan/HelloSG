@@ -1,13 +1,14 @@
-﻿using System;
+﻿using HelloSGBotService.Model.LUIS;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HelloSGBotService.LUISService
+namespace HelloSGBotService.Service
 {
     public interface ILUISService
     {
-        string TestGet();
+        Task<LUISResponse> GetIntent(string input);
     }
 }
