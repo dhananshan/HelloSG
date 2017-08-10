@@ -9,6 +9,6 @@ namespace HelloSGBotService.Service
     public interface IHTTPService
     {
         string ServiceURL { get; set; }
-        Task<T> Get<T>(string input);
+        Task<T> Get<T>(string input, List<Tuple<string, string>> header = null);
     }
 }

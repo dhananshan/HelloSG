@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace HelloSGBotService.Service
 {
-    public interface ILUISService
+    public interface IAIService
     {
-        Task<LUISResponse> GetIntent(string input);
+        Task<T> GetIntent<T>(string input);
     }
 }

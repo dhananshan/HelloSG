@@ -44,15 +44,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Service\HTTPService.cs" />
-    <Compile Include="Service\IHTTPService.cs" />
-    <Compile Include="Service\ILUISService.cs" />
-    <Compile Include="Service\LUISService.cs" />
+    <Compile Include="Model\ExternalService\WeatherModels.cs" />
+    <Compile Include="Service\ExternalService\IExternalService.cs" />
+    <Compile Include="Service\ExternalService\WeatherService.cs" />
+    <Compile Include="Service\HTTP\HTTPService.cs" />
+    <Compile Include="Service\HTTP\IHTTPService.cs" />
+    <Compile Include="Service\AI\IAIService.cs" />
+    <Compile Include="Service\AI\LUISService.cs" />
     <Compile Include="Model\LUIS\LUISModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

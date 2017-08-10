@@ -9,7 +9,7 @@ using HelloSGBotService.Model.LUIS;
 namespace HelloSGBotService.Service
 {
     [Serializable]
-    public class LUISService : ILUISService
+    public class LUISService : IAIService
     {
         private IHTTPService _httpService;
 
@@ -18,9 +18,9 @@ namespace HelloSGBotService.Service
             this._httpService.ServiceURL = ConfigurationManager.AppSettings["LUISServiceURL"].ToString();
         }
 
-        public async Task<LUISResponse> GetIntent(string input)
+        public async Task<T> GetIntent<T>(string input)
         {
-            return await this._httpService.Get<LUISResponse>(input);
+            return await this._httpService.Get<T>(input);
         }
     }
 }

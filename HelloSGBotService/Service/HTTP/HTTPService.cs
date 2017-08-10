@@ -13,10 +13,16 @@ namespace HelloSGBotService.Service
     {
         public string ServiceURL { get; set; }
 
-        public async Task<T> Get<T>(string input)
+        public async Task<T> Get<T>(string input, List<Tuple<string,string>> header=null)
         {
             using (var client = new HttpClient())
             {
+                if(header!=null)
+                    foreach (var item in header)
+                    {
+                        client.DefaultRequestHeaders.Add(item.Item1, item.Item2);
+                    }
+
                 string uri = ServiceURL + input;
                 var result = await client.GetAsync(uri);
 
