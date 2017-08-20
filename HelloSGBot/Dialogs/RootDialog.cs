@@ -30,26 +30,38 @@ namespace NDBot.Dialogs
         private async Task MessageReceivedAsync(IDialogContext context, IAwaitable<object> result)
         {
             var message = await result as Activity;
-            string inputParam = string.Empty;
-
 
             LUISResponse luisRes = await this._aiService.GetIntent<LUISResponse>(message.Text);
 
-            switch (luisRes.topScoringIntent.intent) {
+            switch (luisRes.topScoringIntent.intent.ToLower()) {
 
                 case LUISIntents.Weather:
-                    _exService = new WeatherService();
-
-                    inputParam = $"date_time={DateTime.UtcNow.ToString("yyyy-MM-ddTHH\\:mm\\:ss")}";
-                    inputParam = System.Web.HttpUtility.HtmlEncode(inputParam);
-
-                    var weatherRes = await _exService.GetContent<WeatherResponse>(inputParam);
-
-                    await context.PostAsync($"Todays weather is {weatherRes?.items[0]?.general?.forecast}");
+                    await WeatherIntent(context);
+                    break;
+                case LUISIntents.None:
+                    await None(context);
                     break;
             }
 
             context.Wait(MessageReceivedAsync);
+        }
+
+        private async Task None(IDialogContext context)
+        {
+            await context.PostAsync($"Sorry, I didn't understand. Can you re-type with more clarity?");
+        }
+        private async Task WeatherIntent(IDialogContext context)
+        {
+
+            string inputParam = string.Empty;
+            _exService = new WeatherService();
+
+            inputParam = $"date_time={DateTime.UtcNow.ToString("yyyy-MM-ddTHH\\:mm\\:ss")}";
+            inputParam = System.Web.HttpUtility.HtmlEncode(inputParam);
+
+            var weatherRes = await _exService.GetContent<WeatherResponse>(inputParam);
+
+            await context.PostAsync($"Todays weather is {weatherRes?.items[0]?.general?.forecast}");
         }
 
     }

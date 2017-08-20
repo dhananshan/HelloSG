@@ -5,6 +5,8 @@ using System.Web.Http;
 using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Connector;
 
+using NDBot.Dialogs;
+
 namespace NDBot
 {
     [BotAuthentication]
@@ -21,7 +23,7 @@ namespace NDBot
         {
             if (activity.Type == ActivityTypes.Message)
             {
-                await Conversation.SendAsync(activity, () => new Dialogs.RootDialog());
+                await Conversation.SendAsync(activity, () => new RootDialog());
             }
             else
             {
