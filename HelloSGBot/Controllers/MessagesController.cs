@@ -13,7 +13,7 @@ namespace NDBot
     public class MessagesController : ApiController
     {
         public MessagesController() {
-            //ILUISService luisService
+
         }
         /// <summary>
         /// POST: api/Messages

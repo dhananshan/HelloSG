@@ -17,29 +17,6 @@ namespace NDBot
         protected void Application_Start()
         {
             GlobalConfiguration.Configure(WebApiConfig.Register);
-
-
-            //TODO
-            //var builder = new ContainerBuilder();
-
-            // Get your HttpConfiguration.
-            //var config = GlobalConfiguration.Configuration;
-
-            
-            // Register your Web API controllers.
-            //builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
-
-            //builder.RegisterType<LUISService>()
-            //       .As<ILUISService>()
-            //       .InstancePerRequest();
-
-            //builder.RegisterType<HTTPService>()
-            //       .As<IHTTPService>()
-            //       .InstancePerRequest();
-
-            //var container = builder.Build();
-            //config.DependencyResolver = new AutofacWebApiDependencyResolver(container);
-
         }
     }
 }
