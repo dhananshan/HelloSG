@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Landing Page - Start Bootstrap Theme</title>
+    <title>HelloSG.io</title>
 
     <!-- Bootstrap core CSS-->
     
@@ -20,6 +20,7 @@
 
     <!-- Custom styles for this template -->
     <link href="web-content/landing-page.css" rel="stylesheet">
+    <link href="https://unpkg.com/botframework-webchat/botchat.css" rel="stylesheet" />
 
   </head>
 
@@ -28,20 +29,20 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
       <div class="container">
-        <a class="navbar-brand" href="#">Start Bootstrap</a>
+        <a class="navbar-brand" href="#">HelloSG.io</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link" href="#">About</a>
+              <a class="nav-link" href="#about">About</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Services</a>
+              <a class="nav-link" href="#contrib">Contributors</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Contact</a>
+              <a class="nav-link" href="#contact">Contact</a>
             </li>
           </ul>
         </div>
@@ -51,9 +52,11 @@
     <!-- Header -->
     <header class="intro-header">
       <div class="container">
+        
         <div class="intro-message">
-          <h1>Landing Page</h1>
+          <h1>HelloSG</h1>
           <h3>A Template by Start Bootstrap</h3>
+
           <hr class="intro-divider">
           <ul class="list-inline intro-social-buttons">
             <li class="list-inline-item">
@@ -70,17 +73,35 @@
             </li>
             <li class="list-inline-item">
               <a href="#" class="btn btn-secondary btn-lg">
-                <i class="fa fa-linkedin fa-fw"></i>
-                <span class="network-name">Linkedin</span>
+                <i class="fa fa-facebook fa-fw"></i>
+                <span class="network-name">Facebook</span>
               </a>
             </li>
           </ul>
         </div>
+ 
+      <div class="bot-container">
+          <div id="bot"/>
+          <script src="https://unpkg.com/botframework-webchat/botchat.js"></script>
+          <script>
+            BotChat.App({
+              directLine: { secret: 'ehjNSfh8Cro.cwA.gXU.LWe0b-ceHC3162ogJcr9p0iF2OW1vOolq0jKhHCc5iY' },
+              user: { id: 'anon' },
+              bot: { id: 'botid' },
+              resize: 'detect'
+            }, document.getElementById("bot"));
+          </script>
+      </div>
+
+
+
+
+
       </div>
     </header>
 
     <!-- Page Content -->
-    <section class="content-section-a">
+    <section id="about" class="content-section-a">
 
       <div class="container">
         <div class="row">
@@ -101,7 +122,7 @@
       <!-- /.container -->
     </section>
 
-    <section class="content-section-b">
+    <section id="contrib" class="content-section-b">
 
       <div class="container">
 
@@ -124,7 +145,7 @@
     </section>
     <!-- /.content-section-b -->
 
-    <section class="content-section-a">
+    <section id="contact" class="content-section-a">
 
       <div class="container">
 
@@ -172,8 +193,8 @@
               </li>
               <li class="list-inline-item">
                 <a href="#" class="btn btn-secondary btn-lg">
-                  <i class="fa fa-linkedin fa-fw"></i>
-                  <span class="network-name">Linkedin</span>
+                  <i class="fa fa-facebook fa-fw"></i>
+                  <span class="network-name">Facebook</span>
                 </a>
               </li>
             </ul>
@@ -199,14 +220,14 @@
           </li>
           <li class="footer-menu-divider list-inline-item">&sdot;</li>
           <li class="list-inline-item">
-            <a href="#services">Services</a>
+            <a href="#contrib">Contributors</a>
           </li>
           <li class="footer-menu-divider list-inline-item">&sdot;</li>
           <li class="list-inline-item">
             <a href="#contact">Contact</a>
           </li>
         </ul>
-        <p class="copyright text-muted small">Copyright &copy; Your Company 2017. All Rights Reserved</p>
+        <p class="copyright text-muted small">Copyright &copy; HelloSG 2017. All Rights Reserved</p>
       </div>
     </footer>
 
