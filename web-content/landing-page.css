@@ -21,20 +21,34 @@ body, h1, h2, h3, h4, h5, h6 {
   color: #f8f8f8;
   background: url(intro-bg.jpg) no-repeat center center;
   background-size: cover;
+  height: 100vh;
 }
 
 .intro-message {
   position: relative;
   padding-top: 20%;
   padding-bottom: 20%;
+  float:left;
 }
-
+.wc-chatview-panel {
+  width: 320px;
+  height: 500px;
+  position: relative;
+  background-color: white;
+  right: 10% !important;
+  left: auto !important;
+  top: 20% !important;
+  bottom: auto !important;
+  float: left;
+}
 .intro-message>h1 {
   margin: 0;
   text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.6);
   font-size: 5em;
 }
-
+.bot-container{
+  float:left;
+}
 .intro-divider {
   width: 400px;
   border-top: 1px solid #f8f8f8;
@@ -100,7 +114,7 @@ body, h1, h2, h3, h4, h5, h6 {
 .banner {
   padding: 100px 0;
   color: #f8f8f8;
-  background: url(banner-bg.jpg) no-repeat center center;
+  background: url(banner-bg.png) no-repeat center center;
   background-size: cover;
 }
 
