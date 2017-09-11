@@ -11,6 +11,7 @@ namespace HelloSGBotService.Model.LUIS
 
         public const string Weather = "weather";
         public const string None = "none";
+        public const string Greeting = "greeting";
 
     }
     public class LUISResponse

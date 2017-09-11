@@ -1,5 +1,4 @@
-﻿using Autofac;
-using Autofac.Integration.WebApi;
+﻿
 using Microsoft.Bot.Builder.Dialogs;
 using NDBot.Dialogs;
 using System;

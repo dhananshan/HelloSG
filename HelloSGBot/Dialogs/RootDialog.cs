@@ -14,10 +14,11 @@ namespace NDBot.Dialogs
     {
         private string _intent { get; set; }
 
-        private IAIService _aiService ;
+        private IAIService _aiService;
         private IExternalService _exService;
 
-        public RootDialog() {
+        public RootDialog()
+        {
             this._aiService = new LUISService();
         }
         public Task StartAsync(IDialogContext context)
@@ -33,23 +34,24 @@ namespace NDBot.Dialogs
 
             LUISResponse luisRes = await this._aiService.GetIntent<LUISResponse>(message.Text);
 
-            switch (luisRes.topScoringIntent.intent.ToLower()) {
+            switch (luisRes.topScoringIntent.intent.ToLower())
+            {
 
                 case LUISIntents.Weather:
                     await WeatherIntent(context);
                     break;
                 case LUISIntents.None:
-                    await None(context);
+                    await NoneIntent(context);
+                    break;
+                case LUISIntents.Greeting:
+                    await GreetingIntent(context);
                     break;
             }
 
             context.Wait(MessageReceivedAsync);
         }
 
-        private async Task None(IDialogContext context)
-        {
-            await context.PostAsync($"Sorry, I didn't understand. Can you re-type with more clarity?");
-        }
+
         private async Task WeatherIntent(IDialogContext context)
         {
 
@@ -63,6 +65,20 @@ namespace NDBot.Dialogs
 
             await context.PostAsync($"Todays weather is {weatherRes?.items[0]?.general?.forecast}");
         }
+
+
+        private async Task GreetingIntent(IDialogContext context)
+        {
+            await context.PostAsync("Hi, How can I help you?");
+        }
+
+        private async Task NoneIntent(IDialogContext context)
+        {
+            await context.PostAsync("Sorry, I didn't understand. Can you re-type with more clarity?");
+        }
+
+
+
 
     }
 }
