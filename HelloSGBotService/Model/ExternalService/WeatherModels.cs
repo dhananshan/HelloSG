@@ -19,6 +19,8 @@ namespace HelloSGBotService.Model.ExternalService
         public Valid_Period valid_period { get; set; }
         public General general { get; set; }
         public Period[] periods { get; set; }
+        public Forecasts[] forecasts { get; set; }
+        
     }
 
     public class Valid_Period
@@ -78,6 +80,11 @@ namespace HelloSGBotService.Model.ExternalService
         public string central { get; set; }
         public string south { get; set; }
         public string north { get; set; }
+    }
+
+    public class Forecasts {
+        public string area { get; set; }
+        public string forecast { get; set; }
     }
 
 }

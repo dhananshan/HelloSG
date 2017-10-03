@@ -13,10 +13,13 @@ namespace HelloSGBotService.Service
     {
         private IHTTPService _httpService;
         private string _apiKey;
-        public WeatherService() {
+        public WeatherService(bool isTownIfo) {
             this._httpService = new HTTPService();
             this._apiKey = ConfigurationManager.AppSettings["DatagovsgKey"].ToString();
-            this._httpService.ServiceURL = ConfigurationManager.AppSettings["WeatherServiceURL"].ToString();
+            if(!isTownIfo)
+                this._httpService.ServiceURL = ConfigurationManager.AppSettings["WeatherServiceURL"].ToString();
+            else
+                this._httpService.ServiceURL = ConfigurationManager.AppSettings["WeatherServiceTownURL"].ToString();
         }
 
         public async Task<T> GetContent<T>(string input)

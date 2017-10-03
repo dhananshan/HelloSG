@@ -5,6 +5,8 @@ using Microsoft.Bot.Connector;
 using HelloSGBotService.Service;
 using HelloSGBotService.Model.LUIS;
 using HelloSGBotService.Model.ExternalService;
+using HelloSG.Dialogs;
+using System.Threading;
 
 namespace NDBot.Dialogs
 {
@@ -15,7 +17,6 @@ namespace NDBot.Dialogs
         private string _intent { get; set; }
 
         private IAIService _aiService;
-        private IExternalService _exService;
 
         public RootDialog()
         {
@@ -38,7 +39,7 @@ namespace NDBot.Dialogs
             {
 
                 case LUISIntents.Weather:
-                    await WeatherIntent(context);
+                    context.Call(new WeatherDialog(), this.ResumeAfterDialog);
                     break;
                 case LUISIntents.None:
                     await NoneIntent(context);
@@ -48,22 +49,13 @@ namespace NDBot.Dialogs
                     break;
             }
 
-            context.Wait(MessageReceivedAsync);
+            //context.Wait(MessageReceivedAsync);
         }
 
-
-        private async Task WeatherIntent(IDialogContext context)
+        private async Task ResumeAfterDialog(IDialogContext context, IAwaitable<object> result)
         {
-
-            string inputParam = string.Empty;
-            _exService = new WeatherService();
-
-            inputParam = $"date_time={DateTime.UtcNow.ToString("yyyy-MM-ddTHH\\:mm\\:ss")}";
-            inputParam = System.Web.HttpUtility.HtmlEncode(inputParam);
-
-            var weatherRes = await _exService.GetContent<WeatherResponse>(inputParam);
-
-            await context.PostAsync($"Todays weather is {weatherRes?.items[0]?.general?.forecast}");
+            await context.PostAsync($"Thanks for contacting our support team. Your ticket number is.");
+            context.Wait(this.MessageReceivedAsync);
         }
 
 
