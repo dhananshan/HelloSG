@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloSGBot", "HelloSGBot\He
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloSGBotService", "HelloSGBotService\HelloSGBotService.csproj", "{91C7FE5A-7077-4560-A85A-E9260FF592B5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloSG", "HelloSG\HelloSG.csproj", "{C586B160-9AF1-4FEA-AD70-7950CD762685}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,8 +23,15 @@ Global
 		{91C7FE5A-7077-4560-A85A-E9260FF592B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{91C7FE5A-7077-4560-A85A-E9260FF592B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{91C7FE5A-7077-4560-A85A-E9260FF592B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C586B160-9AF1-4FEA-AD70-7950CD762685}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C586B160-9AF1-4FEA-AD70-7950CD762685}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C586B160-9AF1-4FEA-AD70-7950CD762685}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C586B160-9AF1-4FEA-AD70-7950CD762685}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {15AA4C4E-65FA-44FE-90E3-EC50E5298FE3}
 	EndGlobalSection
 EndGlobal
