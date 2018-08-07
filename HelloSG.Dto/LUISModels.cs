@@ -13,6 +13,8 @@ namespace HelloSG.Dto
         public object[] entities { get; set; }
     }
 
+
+
     public class Topscoringintent
     {
         public string intent { get; set; }
