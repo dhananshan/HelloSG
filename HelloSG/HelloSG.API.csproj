@@ -12,4 +12,10 @@
     <PackageReference Include="Microsoft.Bot.Builder.Integration.AspNet.Core" Version="4.0.1-preview" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\HelloSG.Config\HelloSG.Common.csproj" />
+    <ProjectReference Include="..\HelloSG.Dto\HelloSG.Dto.csproj" />
+    <ProjectReference Include="..\HelloSGService\HelloSG.Service.csproj" />
+  </ItemGroup>
+
 </Project>

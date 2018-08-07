@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using HelloSG.Bot;
+using HelloSGService.HTTP;
+using HelloSGService.Service.AI;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Bot.Builder.BotFramework;
@@ -32,6 +34,9 @@ namespace HelloSG
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<IHttpService, HttpService>();
+            services.AddScoped<IAIService, LUISService>();
+
             services.AddBot<HelloSGComponent>(options =>
             {
                 options.CredentialProvider = new ConfigurationCredentialProvider(Configuration);

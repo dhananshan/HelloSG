@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using HelloSG.Dialog;
+using HelloSG.Dto;
+using HelloSGService.Service.AI;
 using Microsoft.Bot;
 using Microsoft.Bot.Builder;
 using Microsoft.Bot.Builder.Core.Extensions;
@@ -11,15 +13,16 @@ namespace HelloSG.Bot
 {
     public class HelloSGComponent : IBot
     {
+        private readonly DialogSet _dialogs;
+        private readonly IAIService _aiService;
+        
 
-
-        private readonly DialogSet dialogs;
-
-        public HelloSGComponent()
+        public HelloSGComponent(IAIService aiService)
         {
-            // compose dialogs
-            dialogs = new DialogSet();
-            dialogs.Add("mainDialog", MainDialog.Instance);
+            _aiService = aiService;
+            _dialogs = new DialogSet();
+
+            _dialogs.Add("mainDialog", MainDialog.Instance);
         }
 
 
@@ -33,13 +36,18 @@ namespace HelloSG.Bot
         /// for processing this conversation turn. </param>        
         public async Task OnTurn(ITurnContext context)
         {
-
+            
             if (context.Activity.Type == ActivityTypes.Message)
             {
                 var state = context.GetConversationState<Dictionary<string, object>>();
-                var dialogCtx = dialogs.CreateContext(context, state);
+                var dialogCtx = _dialogs.CreateContext(context, state);
+
+
+                LUISResponse luisRes = await this._aiService.GetIntent<LUISResponse>(context.Activity.Text);
+
 
                 await dialogCtx.Continue();
+               
                 if (!context.Responded)
                 {
                     await dialogCtx.Begin("mainDialog");

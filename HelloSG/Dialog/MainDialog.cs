@@ -21,10 +21,11 @@ namespace HelloSG.Dialog
                                 Choices = new[] {new Choice {Value = "Check balance"}, new Choice {Value = "Make payment"}}.ToList()
                             });
                     },
-                                        async (dc, args, next) =>
+
+                    async (dc, args, next) =>
                     {
-            dc.ActiveDialog.State = new Dictionary<string, object>(); // clear the dialog state 
-            await dc.End();
+                        dc.ActiveDialog.State = new Dictionary<string, object>(); // clear the dialog state 
+                        await dc.End();
                     }
       });
 
