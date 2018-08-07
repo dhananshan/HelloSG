@@ -4,6 +4,7 @@ using System.Text;
 
 namespace HelloSG.Dto
 {
+    // LUIS Response JSON Model
     public class LUISResponse
     {
         public string query { get; set; }
