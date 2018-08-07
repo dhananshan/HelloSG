@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using HelloSG.Common.Constant;
 using HelloSG.Dialog;
 using HelloSG.Dto;
 using HelloSGService.Service.AI;
@@ -43,13 +44,25 @@ namespace HelloSG.Bot
                 var dialogCtx = _dialogs.CreateContext(context, state);
 
 
-                LUISResponse luisRes = await this._aiService.GetIntent<LUISResponse>(context.Activity.Text);
-
-
                 await dialogCtx.Continue();
                
                 if (!context.Responded)
                 {
+                    LUISResponse luisRes = await this._aiService.GetIntent<LUISResponse>(context.Activity.Text);
+
+                    switch (luisRes?.topScoringIntent.intent.ToLower()) {
+
+                        case LUISIntents.Weather:
+                            //TODO
+                            break;
+                        case LUISIntents.None:
+                            //TODO
+                            break;
+                        case LUISIntents.Greeting:
+                            //TODO
+                            break;
+                    }
+
                     await dialogCtx.Begin("mainDialog");
                 }
             }
