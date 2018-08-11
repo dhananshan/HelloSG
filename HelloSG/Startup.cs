@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using HelloSG.Bot;
+using HelloSG.Service.Service.ExternalService;
 using HelloSGService.HTTP;
 using HelloSGService.Service.AI;
 using Microsoft.AspNetCore.Builder;
@@ -36,7 +37,8 @@ namespace HelloSG
         {
             services.AddScoped<IHttpService, HttpService>();
             services.AddScoped<IAIService, LUISService>();
-
+            services.AddScoped<IWeatherService, WeatherService>();
+            
             services.AddBot<HelloSGComponent>(options =>
             {
                 options.CredentialProvider = new ConfigurationCredentialProvider(Configuration);

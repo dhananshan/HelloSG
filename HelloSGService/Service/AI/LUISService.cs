@@ -11,8 +11,8 @@ namespace HelloSGService.Service.AI
     {
         private IHttpService _httpService;
 
-        public LUISService(IHttpService httpService) {
-            _httpService = httpService;
+        public LUISService() {
+            _httpService = new HttpService();
             this._httpService.ServiceURL = AppSettings<BotSetting>.Config.LUISServiceURL;
         }
 

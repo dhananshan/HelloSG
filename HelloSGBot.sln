@@ -3,17 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26430.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloSGBot", "HelloSGBot\HelloSGBot.csproj", "{91D92A99-B7F8-4021-9940-2742D17BC5BD}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloSGBotService", "HelloSGBotService\HelloSGBotService.csproj", "{91C7FE5A-7077-4560-A85A-E9260FF592B5}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HelloSG.API", "HelloSG\HelloSG.API.csproj", "{C586B160-9AF1-4FEA-AD70-7950CD762685}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HelloSG.Service", "HelloSGService\HelloSG.Service.csproj", "{4B28AC48-5E6E-422A-A1AC-409ED6E71860}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HelloSG.Common", "HelloSG.Config\HelloSG.Common.csproj", "{10B3488A-6A5C-4E2F-8429-AC93757D0095}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloSG.Dto", "HelloSG.Dto\HelloSG.Dto.csproj", "{714DBA36-5A47-4E64-B44E-25636CF4B519}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HelloSG.Dto", "HelloSG.Dto\HelloSG.Dto.csproj", "{714DBA36-5A47-4E64-B44E-25636CF4B519}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,14 +17,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{91D92A99-B7F8-4021-9940-2742D17BC5BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{91D92A99-B7F8-4021-9940-2742D17BC5BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{91D92A99-B7F8-4021-9940-2742D17BC5BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{91D92A99-B7F8-4021-9940-2742D17BC5BD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{91C7FE5A-7077-4560-A85A-E9260FF592B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{91C7FE5A-7077-4560-A85A-E9260FF592B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{91C7FE5A-7077-4560-A85A-E9260FF592B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{91C7FE5A-7077-4560-A85A-E9260FF592B5}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C586B160-9AF1-4FEA-AD70-7950CD762685}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C586B160-9AF1-4FEA-AD70-7950CD762685}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C586B160-9AF1-4FEA-AD70-7950CD762685}.Release|Any CPU.ActiveCfg = Release|Any CPU

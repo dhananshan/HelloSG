@@ -1,14 +1,17 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using HelloSG.Common.Constant;
 using HelloSG.Dialog;
 using HelloSG.Dto;
+using HelloSGService.HTTP;
 using HelloSGService.Service.AI;
 using Microsoft.Bot;
 using Microsoft.Bot.Builder;
 using Microsoft.Bot.Builder.Core.Extensions;
 using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Schema;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace HelloSG.Bot
 {
@@ -16,14 +19,19 @@ namespace HelloSG.Bot
     {
         private readonly DialogSet _dialogs;
         private readonly IAIService _aiService;
-        
+        private readonly IHttpService _httpService;
 
-        public HelloSGComponent(IAIService aiService)
+
+        public HelloSGComponent(IServiceProvider serviceProvider)
         {
-            _aiService = aiService;
-            _dialogs = new DialogSet();
+            _httpService = serviceProvider.GetService<IHttpService>();
+            _aiService = serviceProvider.GetService<IAIService>();
 
-            _dialogs.Add("mainDialog", MainDialog.Instance);
+
+            _dialogs = new DialogSet();
+            _dialogs.Add("weatherDialog", new WeatherDialog(serviceProvider).CreateWeatherWaterfall());
+
+
         }
 
 
@@ -49,21 +57,27 @@ namespace HelloSG.Bot
                 if (!context.Responded)
                 {
                     LUISResponse luisRes = await this._aiService.GetIntent<LUISResponse>(context.Activity.Text);
+                    var dialogArgs = new Dictionary<string, object>();
+
 
                     switch (luisRes?.topScoringIntent.intent.ToLower()) {
 
                         case LUISIntents.Weather:
-                            //TODO
+                            dialogArgs.Add("LuisResult", luisRes);
+                            await dialogCtx.Begin("weatherDialog", dialogArgs);
                             break;
-                        case LUISIntents.None:
-                            //TODO
-                            break;
-                        case LUISIntents.Greeting:
-                            //TODO
-                            break;
-                    }
 
-                    await dialogCtx.Begin("mainDialog");
+                        case LUISIntents.None:
+                            await dialogCtx.Context.SendActivity("Sorry, I didn't understand. Can you re-type with more clarity?");
+                            await dialogCtx.End();
+                            break;
+
+                        case LUISIntents.Greeting:
+                            await dialogCtx.Context.SendActivity("Hi, How can i help you ?");
+                            await dialogCtx.End();
+                            break;
+
+                    }
                 }
             }
 
