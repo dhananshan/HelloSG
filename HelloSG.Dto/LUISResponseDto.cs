@@ -5,7 +5,7 @@ using System.Text;
 namespace HelloSG.Dto
 {
     // LUIS Response JSON Model
-    public class LUISResponse
+    public class LUISResponseDto
     {
         public string query { get; set; }
         public Topscoringintent topScoringIntent { get; set; }

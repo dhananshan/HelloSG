@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using HelloSG.Common.Config;
 using HelloSGService.HTTP;
 
 namespace HelloSG.Service.Service.ExternalService
@@ -14,11 +15,9 @@ namespace HelloSG.Service.Service.ExternalService
         public WeatherService(IHttpService httpService)
         {
             _httpService = httpService;
-            //this._apiKey = ConfigurationManager.AppSettings["DatagovsgKey"].ToString();
-            //if (!isTownIfo)
-            //    this._httpService.ServiceURL = ConfigurationManager.AppSettings["WeatherServiceURL"].ToString();
-            //else
-            //    this._httpService.ServiceURL = ConfigurationManager.AppSettings["WeatherServiceTownURL"].ToString();
+            this._apiKey = AppSettings<BotSetting>.Config.DatagovsgKey;
+
+            this._httpService.ServiceURL = AppSettings<BotSetting>.Config.WeatherServiceURL;
         }
 
         public async Task<T> GetContent<T>(string input)

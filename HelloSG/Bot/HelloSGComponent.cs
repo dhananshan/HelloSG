@@ -56,7 +56,7 @@ namespace HelloSG.Bot
                
                 if (!context.Responded)
                 {
-                    LUISResponse luisRes = await this._aiService.GetIntent<LUISResponse>(context.Activity.Text);
+                    var luisRes = await this._aiService.GetIntent<LUISResponseDto>(context.Activity.Text);
                     var dialogArgs = new Dictionary<string, object>();
 
 
